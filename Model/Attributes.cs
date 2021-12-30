@@ -17,6 +17,7 @@ namespace Model
         private Description description;
         [JsonProperty]
         private Links links;
+        public Links Link{get{return links;}}
         [JsonProperty]
         private string originalLanguage;
         [JsonProperty]

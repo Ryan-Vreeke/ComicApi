@@ -5,7 +5,7 @@ using Model;
 
 namespace View
 {
-    
+
     class ConsoleView
     {
         static async Task Main(string[] args)
@@ -19,9 +19,21 @@ namespace View
                 command = Console.ReadLine();
                 switch (command)
                 {
-                    case "/manga":
+                    case "/manga"://Gets 10 manga
                         await conn.GetComics();
                         conn.Process();
+                        break;
+                    case "/select":
+                        Console.Write("Enter Manga number: ");
+                        int mangaId = int.Parse(Console.ReadLine());
+                        try
+                        {
+                            conn.GetChapters(mangaId);
+                        }
+                        catch (Exception)
+                        {
+                            Console.Write("Select different chapter");
+                        }
                         break;
                     case "/quit":
                         quit = true;

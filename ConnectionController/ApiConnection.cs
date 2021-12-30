@@ -6,36 +6,33 @@ using Model;
 
 namespace Connection
 {
-    class ApiConnection
+    public class ApiConnection
     {
         HttpClient client = new HttpClient();
         Collection collection;
 
-        static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Getting Json!!");
-            ApiConnection conn = new ApiConnection();
-            await conn.GetComics();
-            conn.Process();
 
         }
-
-        private void Process()
+        public void Process()
         {
             Console.WriteLine(collection.ToString());
 
             foreach (Comic c in collection.comics)
             {
-                Console.WriteLine(c.ToString());
-                Console.WriteLine(c.att.Title);
-
+                Console.WriteLine(collection.comics.IndexOf(c) + ": " + c.ToString());
             }
         }
 
-        private async Task GetComics()
+        public void GetChapters(int id)
+        {
+            Console.Write(collection.comics[id].ToString());
+        }
+
+        public async Task GetComics()
         {
             string response = await client.GetStringAsync("https://api.mangadex.org/manga");
-
 
             collection = JsonConvert.DeserializeObject<Collection>(response);
 

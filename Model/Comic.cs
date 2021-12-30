@@ -19,15 +19,9 @@ namespace Model
 
         public Attributes att { get { return attributes; } set { attributes = value; } }
 
-        public Comic()
-        {
-
-        }
-        
-
         public override string ToString()
         {
-            return id;
+            return "Name: " + attributes.Title.ToString() + "Links: " + attributes.Link.ToString();
         }
     }
 }

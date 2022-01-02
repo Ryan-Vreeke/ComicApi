@@ -25,9 +25,10 @@ namespace Connection
             }
         }
 
-        public void GetChapters(int id)
+        public async Task GetChapters(int id)
         {
-            Console.Write(collection.comics[id].ToString());
+            string response = await client.GetStringAsync("https://api.mangadex.org/manga/" + collection.comics[id].ID + "/aggregate");
+            ChapterCollection chCol = JsonConvert.DeserializeObject<ChapterCollection>(response);
         }
 
         public async Task GetComics()

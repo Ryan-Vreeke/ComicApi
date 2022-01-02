@@ -15,9 +15,12 @@ namespace Model
         [JsonProperty]
         private Attributes attributes;
         [JsonProperty]
-        private List<Relationship> relationships;        
+        private List<Relationship> relationships;     
+
+        public Volume[] volumes;   
 
         public Attributes att { get { return attributes; } set { attributes = value; } }
+        public string ID{get{return id;}}
 
         public override string ToString()
         {

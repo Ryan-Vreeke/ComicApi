@@ -26,14 +26,9 @@ namespace View
                     case "/select":
                         Console.Write("Enter Manga number: ");
                         int mangaId = int.Parse(Console.ReadLine());
-                        try
-                        {
-                            conn.GetChapters(mangaId);
-                        }
-                        catch (Exception)
-                        {
-                            Console.Write("Select different chapter");
-                        }
+
+                        await conn.GetChapters(mangaId);
+
                         break;
                     case "/quit":
                         quit = true;
